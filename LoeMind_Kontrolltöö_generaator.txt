@@ -38,27 +38,29 @@ Klassil Ülesanne on alamklassid erinevate ülesannete tüüpide jaoks.
 ------
 --- Ülesande igas alamklassi jaoks on kokkulepitud 'ülesannete tekstifaili' struktuur 
 Igas alamklassis on meetodid
-* Tükelda ülesanne //failist saadud ühe rea tükeldamine ja jagamine isendimuutujatesse
+* tükeldaYlesanne //failist saadud ühe rea tükeldamine ja jagamine isendimuutujatesse
 * trükiYlesanne
 * trükiVastus  
 
 ------
 --- class Kontrolltöö {
-  private ArrayList <Ülesanne>;
+  private String pealkiri;
+  private ArrayList <Ülesanne> ülesanded;
 
-* meetod  loeKontrolltöö //koostab klassi kontrolltöö. 
-loeb failist ülesanded kasutades klassi ülesanded ja almaülesanded tükeldamist
+* meetod  lisaFailist Ülesanded //koostab klassi kontrolltöö.
+sisendparameeter ülesannete fail, ( vist ka ülesannete tüüp)
+-- loeb failist pealkirja. 
+-- loeb failist ülesanded kasutades klasside 'ülesanded' ja 'almaülesanded' tükeldamist ja lisab ülesanded kontrolltööle. 
 
 ------
 --- class õpilaseTöö
 private String id; //võib olla kood, Järjekorra nr....
 private String Nimi;
-private ArrayList õpilaseÜlesanded;  // õpilasele määratud ülesanded
+private ArrayList <Ülesanded> õpilaseÜlesanded;  // õpilasele määratud ülesanded
 
 meetodid
-* trükiLeotelu //väljastab selle õpilse ülesannete id-d
-* trükiYlesanne //trükib ülesande sellisel kujul nagu see õpilasele antakse. st genereerib eraldi faili
-
+* trükiLeotelu //väljastab selle õpilase ülesannete id-d
+* trükiÕpilasele //trükib ülesande sellisel kujul nagu see õpilasele antakse. st genereerib eraldi faili
 
 ------ 
 --- class Variandid
@@ -66,12 +68,13 @@ private ArrayList <ÕpilaseTöö>
 
 meetodid: 
 * loeNimekiri  //loeb ja tükeldab nimekirja 
+* lisaÕpilane //luuakse uus õpilase isend ja lisatakse ta variantidele
 * genereeri(String kood,  int arv) // parameetrid( õpilase nimi, ja arv mitu ülesannet peab  kontrolltööse tulema)
 * genereeriKõigile (int) // genereerib kõigile failid kutsub välja eelmist funktsiooni. 
 
 * kirjutaVariandid // genereerib faili, kus on õpilaste nimekiri ja tema variandid. 
 * loeVariandid // loeb failist sisse failist variandid.txt. 
-* kirjutaÕpilasteFailid // läbides kogu massivi teeb kõikidele failid 
+* kirjutaÕpilasteFailid // läbides kogu massivi teeb kõikidele failid meetodiga trükiÕpilasele
 * kirjutaVastused  // genereerib vastuste faili 
  
  
