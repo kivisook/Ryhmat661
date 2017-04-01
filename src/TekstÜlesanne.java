@@ -12,11 +12,11 @@ public class TekstÜlesanne extends Ülesanne {
     //teises reas vastuse_nimi, tab, vastuse_tekst
 
     public static void tükeldaÜlesanne (ArrayList YlList, ArrayList VaList, String ülesanderida, String vastuserida) {
-        String[] tükid1 = ülesanderida.split("\t");   //osad on eraldatud tab-iga
-        String ülesandetekst = tükid1[0];            //ülesanded on esimesel real teisel kohal, aga ei võta???
+        String[] tükid1 = ülesanderida.split("  ");   //osad on eraldatud tab-iga
+        String ülesandetekst = tükid1[1];            //ülesanded on esimesel real teisel kohal
 
-        String[] tükid2 = vastuserida.split("\t");
-        String vastus = tükid2[0];                   //vastused on teisel real teisel kohal, aga ei võta???
+        String[] tükid2 = vastuserida.split("   ");
+        String vastus = tükid2[1];                   //vastused on teisel real teisel kohal
 
         trükiÜlesanne(YlList, ülesandetekst);   //lisab ülesande teksti etteantud faili
         trükiVastus(VaList, vastus);            //lisab vastuse etteantud faili
