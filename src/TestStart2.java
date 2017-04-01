@@ -14,12 +14,12 @@ public class TestStart2 {
         Scanner scanner = new Scanner(file1, "UTF-8");
         scanner.close();
 
-        System.out.println(koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne"));
+        //System.out.println(koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne"));
 
         File file2 = new File("tekstülesanded.txt");
         Scanner sc = new Scanner(file2, "UTF-8");
         sc.close();
-        System.out.println(koostaKontrolltöö.lisaFailistÜlesanded(file2, "tekstülesanne"));
+        //System.out.println(koostaKontrolltöö.lisaFailistÜlesanded(file2, "tekstülesanne"));
 
 
         //ülesandeid saab ka ühekaupa sisestada
@@ -27,8 +27,13 @@ public class TestStart2 {
 
         //ArvutusÜlesanne.trükiÜlesanne("4+6");
         //ArvutusÜlesanne.trükiVastus("10");
-        //ArvutusÜlesanne.trükiÜlesanne("5+7");
-        //ArvutusÜlesanne.trükiVastus("12");
+
+        ÕpilaseTöö mary = new ÕpilaseTöö("1.õ", "Mary Aas");
+        Ülesanne yl1 = new Ülesanne("1.", "2+3", "5");
+        mary.lisaÜlesanne(yl1);
+
+        System.out.println(mary.trükiÕpilasele());
+        System.out.println(mary.trükiÕpilaseVastused());
 
     }
 }
