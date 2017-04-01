@@ -28,9 +28,11 @@ public class TestStart2 {
         //ArvutusÜlesanne.trükiÜlesanne("4+6");
         //ArvutusÜlesanne.trükiVastus("10");
 
+
         ÕpilaseTöö mary = new ÕpilaseTöö("1.õ", "Mary Aas");
-        Ülesanne yl1 = new Ülesanne("1.", "2+3", "5");
-        mary.lisaÜlesanne(yl1);
+        for (int i = 0; i < 10; i++) {
+            mary.lisaÜlesanne(koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne").get(i));
+        }
 
         System.out.println(mary.trükiÕpilasele());
         System.out.println(mary.trükiÕpilaseVastused());
