@@ -12,4 +12,18 @@ public class Ülesanne {
         this.küsimus = küsimus;
         this.vastus = vastus;
     }
+    // Kui ülesandeklassis ei ole väljatrükki üle defineeritud, siis kasutab seda
+    public String trükiKüsimus(){
+        return küsimus;
+    }
+
+    // Kui ülesandeklassis ei ole väljatrükki üle defineeritud, siis kasutab seda
+    public String trükiVastus (){
+        return vastus;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
 }
