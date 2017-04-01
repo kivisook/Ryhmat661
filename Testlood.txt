@@ -1,0 +1,42 @@
+Testlugu
+Tegevuse sammud
+
+Algseis: kontroltöö jjoak on eraldi kataloog, kus on failid:
+Nimekiri.txt
+Üks või mitu ülesannnete faili
+
+1. Luua isend kontrolltöö.
+2. Lugeda meetodiga 'lisaFailistÜlesanded' sisse etteantud failist ülesanded.
+2a. seda sammu võib korrata ja lisada ka teisest failist teist tüüpi ülesanded
+
+3. teha uus isend 'Variandid'
+4. meetodiga 'loeNimekiri' lugeda nimekirjade failist õpilaste andmed.
+
+5. meetodiga 'genereeriKõigile' genereerib isendisse variandid igale õpilasele etteantud arvu ülesandeid
+6. meetodiga 'kirjutaVastused' kirjutab vastuste faili
+7. meetodiga 'kirjutaÕpilasteFailid' genereerib almkataloogi õpilaste failid
+8. meetodiga 'kirjutaVariandid' genereerib variantide faili, mis annab õpetajale ülevaate ja millega saab järgmisel päeval tööd jätkata.
+// punktid 6.-8. võib kokku panna ka üheks meetodiks 'uuendaFaile'
+
+Oodatav tulemus:
+Kontrolltöö kataloogi on lisandunud failid:
+variandid.txt
+vastused.txt
+alamkataloog 'KT', kus on kõigi õpilaste tööd.
+
+See oli miinimumvajadus. Nüüd variantide halduse sammud.
+//
+//9. meetodiga 'loeVariandid' saab sisse lugeda eelmise päeval genereeritud variandid.txt ja endega tööd jätkata
+10. meetodiga 'lisaÕpilane' saab lisada uue õpilase
+11. meetodiga 'genereeri' saab ühele õpilasele genereerida variandid
+12. meetodiga 'trükiÕpilasele' teeb selel õpilase faili
+13. meetodiga 'kirjutaVastused' uuendab vastuste faili
+14. meetodiga 'kirjutaVariandid' uuendab variantide faili
+
+Oodatav tulemus: üks laps on lisatud ja failid on uuendatud.
+
+
+
+
+
+

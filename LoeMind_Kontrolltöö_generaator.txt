@@ -1,0 +1,102 @@
+Kontrolltöö variantide generaator. 
+
+------
+--- PROGRAMMI EESMÄRK 
+Sisendiks on õpilaste nimekiri ja kontrolltöö ülesannete fail. 
+Ülesannete failis on ülesanded ja vastused. 
+Süsteem genereerib iga õpilase jaoks kontrolltöö faili ja õpetaja jaoks vastuste faili  õpilaste kaupa. 
+
+------
+--- SISEND ja VÄLJUNDFAILID
+Iga kontrolltöö failid on eraldi kaustas. 
+Algandmed 
+* Nimekiri.txt on õpilaste nimekirja fail  
+* Ülesanded.txt on ülesannete fail fail. 
+Süsteemi genereeritud failid 
+* Variandid.txt  Õpilastele genereeritud variandid.
+//Seda faili saab kasutada ka juba genereeritud kontrolltööle uute õpilaste lisamiseks.
+//(Nt. Kõike ei taheta uuesti genereerida, sest osa töid on juba trükitud)
+* Vastused.txt on õpetajale tööde kontrollimiseks õpilaste variandid koos vastustega vastustega. 
+* Süsteem loob alamkataloogi, kuhu genereerib iga õpilase jaoks faili.  Faili nimeks on õpilase nimi.   
+
+------
+--- Class Ülesanne
+	private String ID; //ülesande identifikaator (kood) 
+	private String küsimus; // Ülesande sõnastus
+	private String vastus; // Ülesande vastus 
+  	//Laiendusvõimalus:  punkte /*mitu punkti ülesanne ananab*/
+  	//Laiendusvõimalus:  kohustuslik /* Need ülesanded lisada kõigile*/
+  	//Laiendusvõimalus:  Ülesande blokk /*Nt. 3 ülesannet ühest ja 2 ülesannet on teisest plokist */
+	
+Klassil Ülesanne on alamklassid erinevate ülesannete tüüpide jaoks. 
+- TekstÜlesanne (vt eraldi kirjeldus)
+- ArvutusÜlesanne (vt eraldi kirjeldus)
+// Laiendusvõimlused: Parameetritega ülesanne. Nt. kõigil on sama tekstiosa,
+//aga tektis olevad numbrid on erinevad. nn kiiruse arvutamis ülesanne)
+// Laiendusvõimlused: Valikvastustega ülesanne.     
+
+------
+--- Ülesande igas alamklassi jaoks on kokkulepitud 'ülesannete tekstifaili' struktuur 
+Igas alamklassis on meetodid
+* tükeldaYlesanne //failist saadud ühe rea tükeldamine ja jagamine isendimuutujatesse
+* trükiYlesanne
+* trükiVastus  
+
+------
+--- class Kontrolltöö {
+  private String pealkiri;
+  private ArrayList <Ülesanne> ülesanded;
+
+* meetod  lisaFailist Ülesanded //koostab klassi kontrolltöö.
+sisendparameeter ülesannete fail, ( vist ka ülesannete tüüp)
+-- loeb failist pealkirja. 
+-- loeb failist ülesanded kasutades klasside 'ülesanded' ja 'almaülesanded' tükeldamist ja lisab ülesanded kontrolltööle. 
+
+------
+--- class õpilaseTöö
+private String id; //võib olla kood, Järjekorra nr....
+private String Nimi;
+private ArrayList <Ülesanded> õpilaseÜlesanded;  // õpilasele määratud ülesanded
+
+meetodid
+* trükiLeotelu //väljastab selle õpilase ülesannete id-d
+* trükiÕpilasele //trükib ülesande sellisel kujul nagu see õpilasele antakse. st genereerib eraldi faili
+
+------ 
+--- class Variandid
+private ArrayList <ÕpilaseTöö> 
+
+meetodid: 
+* loeNimekiri  //loeb ja tükeldab nimekirja 
+* lisaÕpilane //luuakse uus õpilase isend ja lisatakse ta variantidele
+* genereeri(String kood,  int arv) // parameetrid( õpilase nimi, ja arv mitu ülesannet peab  kontrolltööse tulema)
+* genereeriKõigile (int) // genereerib kõigile failid kutsub välja eelmist funktsiooni. 
+
+* kirjutaVariandid // genereerib faili, kus on õpilaste nimekiri ja tema variandid. 
+* loeVariandid // loeb failist sisse failist variandid.txt. 
+* kirjutaÕpilasteFailid // läbides kogu massivi teeb kõikidele failid meetodiga trükiÕpilasele
+* kirjutaVastused  // genereerib vastuste faili 
+ 
+ 
+
+
+
+
+
+      
+
+   
+
+
+
+
+
+
+
+
+
+
+------
+--- 
+
+     
