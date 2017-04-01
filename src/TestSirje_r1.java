@@ -1,5 +1,5 @@
 import java.io.FileNotFoundException;
-
+import java.util.ArrayList;
 /**
  * Created by lindsirj on 1.04.2017.
  */
@@ -18,11 +18,16 @@ public class TestSirje_r1 {
 
 
         System.out.println(sirje.trükiLeotelu());
-
         System.out.println(sirje.trükiÕpilasele());
-
         System.out.println(sirje.trükiÕpilaseVastused());
 
+        Variandid var1 = new Variandid();
+        var1.loeNimekiri();
+        System.out.println(var1.trükiVariandid());
+
+        System.out.println(var1);
+        System.out.println(var1.getVariant());
+        //     System.out.println(var1.variant[0]);
 
     }
 }

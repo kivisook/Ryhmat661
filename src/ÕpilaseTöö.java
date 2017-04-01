@@ -61,5 +61,13 @@ public class ÕpilaseTöö {
         return trükk;
     }
 
-
+    @Override
+    // siin on praegu sama kood, mis trükiLeotelu()
+    public String toString() {
+        String trükk = id +" "+Nimi;
+        for (Ülesanne ülesanne : õpilaseÜlesanded) {
+            trükk += "  "+ülesanne.getID();
+        }
+        return trükk;
+    }
 }
