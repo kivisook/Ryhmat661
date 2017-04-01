@@ -12,4 +12,12 @@ public class Ülesanne {
         this.küsimus = küsimus;
         this.vastus = vastus;
     }
+
+    public String getKüsimus() {
+        return küsimus;
+    }
+
+    public String getVastus() {
+        return vastus;
+    }
 }
