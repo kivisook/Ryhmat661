@@ -8,6 +8,9 @@ import java.util.Scanner;
  */
 public class TestStart2 {
     public static void main (String [] args) throws FileNotFoundException {
+
+
+
         //arvutusülesannete failist
         File file1 = new File("ylesanded.txt");
         Scanner scanner = new Scanner(file1, "UTF-8");
@@ -40,9 +43,13 @@ public class TestStart2 {
             TekstÜlesanne.tükeldaÜlesanne(Ylist2, Vlist2, ülesanderida, vastuserida);
         }
 
-        System.out.println(Ylist2); //prindib tekstülesannete listi
-        System.out.println(Vlist2); //prindib tekstülesannete vastuste listi
+        //System.out.println(Ylist2); //prindib tekstülesannete listi
+        //System.out.println(Vlist2); //prindib tekstülesannete vastuste listi
 
+        //võtab ettentud failist kõik ülesanded ja teeb neist kontrolltöö ülesanded
+        koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne");
+        System.out.println(koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne"));
+        System.out.println(koostaKontrolltöö.lisaFailistÜlesanded(file2, "tekstülesanne"));
 
         //ülesandeid saab ka ühekaupa sisestada
         //Ülesanne Y1 = new ArvutusÜlesanne("esimene", "3+2=", "5");
