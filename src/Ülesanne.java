@@ -6,7 +6,6 @@ public class Ülesanne {
     private String küsimus; // Ülesande sõnastus
     private String vastus; // Ülesande vastus
 
-
     public Ülesanne(String ID, String küsimus, String vastus) {
         this.ID = ID;
         this.küsimus = küsimus;
@@ -22,9 +21,7 @@ public class Ülesanne {
         return vastus;
     }
 
-    public String getID() {
-        return ID;
-    }
+    public String getID() {return ID;}
 
 
     public String getKüsimus() {
@@ -33,5 +30,14 @@ public class Ülesanne {
 
     public String getVastus() {
         return vastus;
+    }
+
+    @Override
+    public String toString() {
+        return "Ülesanne: {" +
+                "ID='" + ID + '\'' +
+                ", küsimus='" + küsimus + '\'' +
+                ", vastus='" + vastus + '\'' +
+                '}';
     }
 }

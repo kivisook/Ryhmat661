@@ -15,19 +15,18 @@ public class koostaKontrolltöö {
         this.pealkiri = pealkiri;
     }
 
-    public static ArrayList<String> lisaFailistÜlesanded(File sisendfail, String tüüp) throws FileNotFoundException {
+    public static ArrayList<Ülesanne> lisaFailistÜlesanded(File sisendfail, String tüüp) throws FileNotFoundException {
+
+        ArrayList<Ülesanne> ülesanneteList = new ArrayList<>();
+
         Scanner scanner = new Scanner(sisendfail, "UTF-8");
-        ArrayList<String> KTül1 = new ArrayList<>();
-        ArrayList<String> KTva1 = new ArrayList<>();
                 //kui etteantud tüüp on arvutusülesanne
         if (tüüp.equals("arvutusülesanne")) {
             while (scanner.hasNextLine()) {
                 String rida = scanner.nextLine();
-                ArvutusÜlesanne.tükeldaÜlesanne(KTül1, KTva1, rida); //rakendab arvutusülesannete klassi meetodid
-
+                ülesanneteList.add(ArvutusÜlesanne.tükeldaÜlesanne(rida)); //rakendab arvutusülesannete klassi meetodid
             }
         }
-
             //kui etteantud tüüp on tekstülesanne
         else if (tüüp.equals("tekstülesanne")) {
             ArrayList<String> YlVa = new ArrayList<>();
@@ -38,14 +37,11 @@ public class koostaKontrolltöö {
             for (int i = 0; i < YlVa.size() - 1; i=i+2) {
                 String ülesanderida = YlVa.get(i);
                 String vastuserida = YlVa.get(i+1);
-                TekstÜlesanne.tükeldaÜlesanne(KTül1, KTva1, ülesanderida, vastuserida); //rakendab tekstülesannete klassi meetodit
+                ülesanneteList.add(TekstÜlesanne.tükeldaÜlesanne(ülesanderida, vastuserida)); //rakendab tekstülesannete klassi meetodit
             }
         }
         scanner.close();
-        //return KTül1; //tagastab ülesannete listi
-        return KTva1;   //tagastab vastuste listi
-
-
+        return ülesanneteList;
 
     }
 }
