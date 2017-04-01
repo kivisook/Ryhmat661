@@ -26,4 +26,12 @@ public class Ülesanne {
         return ID;
     }
 
+
+    public String getKüsimus() {
+        return küsimus;
+    }
+
+    public String getVastus() {
+        return vastus;
+    }
 }
