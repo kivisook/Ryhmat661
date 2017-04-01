@@ -1,0 +1,6 @@
+Ylesanne1   Milline arv tuleks liita arvule -3, et saada summaks 54?
+Vastus1 See arv on 57.
+Ylesanne2   Hommikul näitas termomeeter -8 kraadi. Mitu kraadi näitab termomeeter õhtul, kui temperatuur tõusis päeva jooksul 3 kraadi võrra?
+Vastus2 Õhtul näitab termomeeter -5 kraadi.
+Ylesanne3   Ukul oli 90 pähklit. Ta sõi oma pähklitest ära 40%. Mitu pähklit jäi järele?
+Vastus3 Alles jäi 54 pähklit.
