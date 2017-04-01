@@ -10,23 +10,42 @@ public class koostaKontrolltöö {
     private String pealkiri;
     private ArrayList<Ülesanne> ülesanded;
 
-    public koostaKontrolltöö(String nimi, ArrayList<Ülesanne> ülesanded) {
+    public koostaKontrolltöö(String pealkiri, ArrayList<Ülesanne> ülesanded) {
         this.ülesanded = ülesanded;
         this.pealkiri = pealkiri;
     }
 
-    public static ArrayList lisaFailistÜlesanded(File sisendfail, String tüüp) throws FileNotFoundException {
+    public static ArrayList<String> lisaFailistÜlesanded(File sisendfail, String tüüp) throws FileNotFoundException {
         Scanner scanner = new Scanner(sisendfail, "UTF-8");
         ArrayList<String> KTül1 = new ArrayList<>();
         ArrayList<String> KTva1 = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            String rida = scanner.nextLine();
-            if (tüüp.equals("arvutusülesanne")) {
-                ArvutusÜlesanne.tükeldaÜlesanne(KTül1, KTva1, rida); //paneb failist ülesanded ühte listi ja vastused teise
+                //kui etteantud tüüp on arvutusülesanne
+        if (tüüp.equals("arvutusülesanne")) {
+            while (scanner.hasNextLine()) {
+                String rida = scanner.nextLine();
+                ArvutusÜlesanne.tükeldaÜlesanne(KTül1, KTva1, rida); //rakendab arvutusülesannete klassi meetodid
+
             }
-            //siia on vaja veel tekstülesannetefaili varianti
+        }
+
+            //kui etteantud tüüp on tekstülesanne
+        else if (tüüp.equals("tekstülesanne")) {
+            ArrayList<String> YlVa = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                String ridadekaupa = scanner.nextLine();
+                YlVa.add(ridadekaupa);
+            }
+            for (int i = 0; i < YlVa.size() - 1; i=i+2) {
+                String ülesanderida = YlVa.get(i);
+                String vastuserida = YlVa.get(i+1);
+                TekstÜlesanne.tükeldaÜlesanne(KTül1, KTva1, ülesanderida, vastuserida); //rakendab tekstülesannete klassi meetodit
+            }
         }
         scanner.close();
-        return KTül1;
+        //return KTül1; //tagastab ülesannete listi
+        return KTva1;   //tagastab vastuste listi
+
+
+
     }
 }
