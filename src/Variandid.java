@@ -26,21 +26,50 @@ public class Variandid {
         scanner.close();
     }
 
-//    public void genereeri(String ÕpilaseID){
-//        ÕpilaseTöö koht;
-//        koht=variant.indexOf("1");
+    public void genereeriÜhele(ÕpilaseTöö õpilane, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+        // tühjendab. kustutab varem genereritud variandid ära
+        õpilane.kustutaÕpilaseÜlesanded();
+        if (algoritm == "KÕIK"){
+            for (int i = 0; i < ülesanneteArv; i++) {
+               õpilane.lisaÜlesanne(kt.getÜlesanded().get(i));
+            }
+        }
+    }
+    // sellega saab genererida ühele käsurealt teades õpilase koodi.
+    public void genereeriÜhele(String õpilaseID, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+        for (ÕpilaseTöö seeÕpilane : variant) {
+            // otsime õpilast, kelle id on õpilaseID
+            if (seeÕpilane.getId().compareTo(õpilaseID) == 0) {
+                genereeriÜhele(seeÕpilane, kt, algoritm, ülesanneteArv);
+            }
+        }
+    }
 
-   // }
 
+    public void genereeriKõigile(koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+        // üle kogu variandi tabeli õpilaste
+        for (ÕpilaseTöö õpilane : variant) {
+            genereeriÜhele(õpilane, kt, algoritm,ülesanneteArv );
+        }
+    }
 
     //väljastab nimekirja, kus on õpilaste nimekiri ja tema variandid.
-    public String trükiVariandid(){
-        String trükk="";
+    public String kuvaVariandid(){
+        String trükk = "VARIANTIDE LEHT \n";
         for (ÕpilaseTöö õpilaseTöö : variant) {
             trükk += õpilaseTöö.trükiLeotelu() +'\n';
         }
         return trükk;
     }
+
+    public String kuvaVastused(){
+        String trükk = "VASTUSTE LEHT \n";
+        for (ÕpilaseTöö õpilaseTöö : variant) {
+            trükk += õpilaseTöö.trükiÕpilaseVastused() +'\n';
+        }
+        return trükk;
+    }
+
 
     @Override
     public String toString() {

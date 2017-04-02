@@ -61,6 +61,14 @@ public class ÕpilaseTöö {
         return trükk;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void kustutaÕpilaseÜlesanded() {
+        this.õpilaseÜlesanded = new ArrayList<>();
+    }
+
     @Override
     // siin on praegu sama kood, mis trükiLeotelu()
     public String toString() {

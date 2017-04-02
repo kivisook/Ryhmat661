@@ -23,11 +23,15 @@ public class TestSirje_r1 {
 
         Variandid var1 = new Variandid();
         var1.loeNimekiri();
-        System.out.println(var1.trükiVariandid());
+        System.out.println(var1.kuvaVariandid());
 
         System.out.println(var1);
         System.out.println(var1.getVariant());
         //     System.out.println(var1.variant[0]);
+
+
+
+
 
     }
 }
