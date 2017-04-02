@@ -34,10 +34,10 @@ public class Ülesanne {
 
     @Override
     public String toString() {
-        return "Ülesanne: {" +
-                "ID='" + ID + '\'' +
-                ", küsimus='" + küsimus + '\'' +
-                ", vastus='" + vastus + '\'' +
-                '}';
+        return "[" +
+                "ID: '" + ID + '\'' +
+                ", Küsimus: '" + küsimus + '\'' +
+                ", Vastus: '" + vastus + '\'' +
+                ']';
     }
 }

@@ -32,6 +32,7 @@ public class TestStart2 {
         ÕpilaseTöö mary = new ÕpilaseTöö("1.õ", "Mary Aas");
         for (int i = 0; i < 10; i++) {
             mary.lisaÜlesanne(koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne").get(i));
+           // mary.lisaÜlesanne(koostaKontrolltöö.lisaFailistÜlesanded(file2, "tekstülesanne").get(i));
         }
 
         System.out.println(mary.trükiÕpilasele());
