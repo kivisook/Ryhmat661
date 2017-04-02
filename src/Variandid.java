@@ -33,7 +33,7 @@ public class Variandid {
         õpilane.kustutaÕpilaseÜlesanded();
         if (algoritm == "KÕIK"){
             for (int i = 0; i < ülesanneteArv; i++) {
-               õpilane.lisaÜlesanne(kt.getÜlesanded().get(i));
+                õpilane.lisaÜlesanne(kt.getÜlesanded().get(i));
             }
         }
         if (algoritm == "JUHUSLIK") {

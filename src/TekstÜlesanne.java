@@ -13,6 +13,13 @@ public class TekstÜlesanne extends Ülesanne {
     //tekstülesande failis on ühes reas: ülesande_id, tab, ülesande_küsimus
     //teises reas vastuse_id, tab, vastuse_tekst
 
+    @Override
+    public Ülesanne tükeldaÜlesanne(){
+        Ülesanne yl = new TekstÜlesanne(this.getID(), this.getKüsimus(), this.getVastus());
+        return yl;
+    }
+
+
     public static Ülesanne tükeldaÜlesanne (String ülesanderida, String vastuserida) {
 
         String[] tükid1 = ülesanderida.split("  ");   //osad on eraldatud tab-iga
@@ -22,7 +29,7 @@ public class TekstÜlesanne extends Ülesanne {
         String[] tükid2 = vastuserida.split("   ");
         String vastus = tükid2[1];                   //vastused on teisel real teisel kohal
 
-        Ülesanne yl = new Ülesanne(indeks, ülesandetekst, vastus);
+        Ülesanne yl = new TekstÜlesanne(indeks, ülesandetekst, vastus);
         return yl;
 
     }

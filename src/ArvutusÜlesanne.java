@@ -11,6 +11,12 @@ public class ArvutusÜlesanne extends Ülesanne {
         super(ID, küsimus, vastus);
     }
 
+    @Override
+    public Ülesanne tükeldaÜlesanne(){
+        Ülesanne yl = new ArvutusÜlesanne(this.getID(), this.getKüsimus(), this.getVastus());
+        return yl;
+    }
+
 
     public static Ülesanne tükeldaÜlesanne (String rida) {
 
@@ -19,7 +25,7 @@ public class ArvutusÜlesanne extends Ülesanne {
         String ülesandetekst = tükid[1];            //ülesanded on teisel kohal
         String vastus = tükid[2];                   //vastused on kolmandal kohal
 
-        Ülesanne yl = new Ülesanne(indeks, ülesandetekst, vastus);
+        Ülesanne yl = new ArvutusÜlesanne(indeks, ülesandetekst, vastus);
         return yl;
     }
 
@@ -32,4 +38,3 @@ public class ArvutusÜlesanne extends Ülesanne {
     }
 
 }
-

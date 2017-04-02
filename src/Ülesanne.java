@@ -1,7 +1,7 @@
 /**
  * Created by kersti on 01.04.17.
  */
-public class Ülesanne {
+abstract class Ülesanne {
     private String ID; //ülesande identifikaator (kood)
     private String küsimus; // Ülesande sõnastus
     private String vastus; // Ülesande vastus
@@ -31,6 +31,8 @@ public class Ülesanne {
     public String getVastus() {
         return vastus;
     }
+
+    abstract Ülesanne tükeldaÜlesanne();
 
     @Override
     public String toString() {
