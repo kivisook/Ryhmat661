@@ -27,11 +27,13 @@ public class TestStart {
         //Testin ühte õpilast. lisan talle rohkem
         klass6a.genereeriÜhele("3",kt, "KÕIK", 6);
 
-        System.out.println(klass6a.kuvaVariandid());
-        System.out.println(klass6a.kuvaVastused());
-        System.out.println(klass6a.kuvaVastused());
+        klass6a.kuvaVariandid(); //ekraanile
+        klass6a.failVariandid(); // faili
 
+        klass6a.kuvaVastused(); //ekraanile
+        klass6a.failVastused(); //faili
 
-
+        klass6a.failidKõigile(); //  genereerib faildi kõigile
+        klass6a.failÜhele("3"); // genereerib ühele faili
     }
 }

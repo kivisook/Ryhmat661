@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +26,7 @@ public class ÕpilaseTöö {
     //konstruktor uue õpilase lisamine koos ülesannetega. Seda on vaja variantidest taastamisel
     public ÕpilaseTöö(String id, String nimi, ArrayList<Ülesanne> õpilaseÜlesanded) {
         this.id = id;
-        Nimi = nimi;
+        this.Nimi = nimi;
         this.õpilaseÜlesanded = õpilaseÜlesanded;
     }
 
@@ -36,22 +39,23 @@ public class ÕpilaseTöö {
         return trükk;
     }
 
-    //trükib Kontrolltöö sellisel kujul nagu see õpilasele antakse.
-    // ma pane praegu stringiks, sest ei tea
-     public String trükiÕpilasele() {
-         String trükk ="";
-         trükk +="--------------------\n";
-         trükk +=Nimi+ '\n';
-         trükk += "KONTROLLTÖÖ"+ '\n' ;
+    public void failÕpilasele() throws FileNotFoundException {
+        String failinimi = "koostatud\\"+this.Nimi+".txt";
+        File file = new File(failinimi);
+        // Kirjutamine
+        PrintWriter pw = new PrintWriter(file);
 
-         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-             trükk +=ülesanne.getID()+" "+ülesanne.trükiKüsimus()+"\n\n";
-         }
-         trükk +="--------------------\n";
-         return trükk;
+        String trükk ="";
+        trükk +=Nimi+ "\n\n";
+        trükk += "KONTROLLTÖÖ"+ "\n\n";
 
-
+        for (Ülesanne ülesanne : õpilaseÜlesanded) {
+            trükk +=ülesanne.getID()+" "+ülesanne.trükiKüsimus()+"\n\n";
+        }
+        pw.append(trükk);
+        pw.close();
     }
+
 
     public String trükiÕpilaseVastused() {
         String trükk = id + " " + Nimi + ":" ;
