@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -34,6 +35,20 @@ public class Variandid {
                õpilane.lisaÜlesanne(kt.getÜlesanded().get(i));
             }
         }
+        if (algoritm == "JUHUSLIK") {
+            int max = kt.getÜlesanded().size();
+            ArrayList<Integer> juhuslikud = new ArrayList<>();
+            for (int i = 0; i < max; i++) {
+                juhuslikud.add(i);
+            }
+            Collections.shuffle(juhuslikud);    //ajab arvud sassi
+            for (int i = 0; i < ülesanneteArv; i++) {
+                int j = juhuslikud.get(i);
+                õpilane.lisaÜlesanne(kt.getÜlesanded().get(j));
+            }
+
+        }
+
     }
     // sellega saab genererida ühele käsurealt teades õpilase koodi.
     public void genereeriÜhele(String õpilaseID, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
