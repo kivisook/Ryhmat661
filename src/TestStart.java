@@ -35,5 +35,18 @@ public class TestStart {
 
         klass6a.failidKõigile(); //  genereerib faildi kõigile
         klass6a.failÜhele("3"); // genereerib ühele faili
+
+        //näide, küsimuse trükkimine ekraanile
+        System.out.println(ArvutusÜlesanne.tükeldaÜlesanne("1000 10000+100= 1100"));
+
+        //näide, (ülemklassis) abstraktse meetodi kasutamine
+        Ülesanne a1 = new ArvutusÜlesanne("66", "666-66=", "600");
+        System.out.println(a1.tükeldaÜlesanne());
+
+        Ülesanne t1 = new TekstÜlesanne("77", "Kolmnurga nurkade summa on: ", "180 kraadi.");
+        System.out.println(t1.tükeldaÜlesanne());
+
+
+
     }
 }
