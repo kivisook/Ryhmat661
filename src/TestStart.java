@@ -1,7 +1,4 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by lindsirj on 20.03.2017.
@@ -10,11 +7,14 @@ public class TestStart {
     public static void main(String[] args) throws FileNotFoundException {
 
         // Teeme kontrolltöö ja tõmbame sinna sisse kõik ülesanded
-        koostaKontrolltöö kt = new koostaKontrolltöö("KONTROLLTÖÖ 08.04.2017");
-        kt.lisaFailistÜlesanded1("ylesanded.txt", "arvutusülesanne");
+        Kontrolltöö kt = new Kontrolltöö("KONTROLLTÖÖ 08.04.2017");
+        kt.lisaFailistÜlesanded("ylesanded.txt", "arvutusülesanne");
+        Kontrolltöö kt2 = new Kontrolltöö("KT2 tekstülesanded");
+        kt2.lisaFailistÜlesanded("tekstülesanded.txt", "tekstülesanne");
 
         // vaatme, mis kontrolltöösse sai.
         System.out.println(kt);
+        System.out.println(kt2);
 
         // Tegeleme õpilastega. Loome varaiandid, tõmbame sinna õpilased
         Variandid klass6a = new Variandid();

@@ -40,8 +40,8 @@ public class ÕpilaseTöö {
     }
 
     public void failÕpilasele() throws FileNotFoundException {
-        String failinimi = "koostatud\\"+this.Nimi+".txt";
-        File file = new File(failinimi);
+        File file = new File("koostatud", this.Nimi+".txt");
+        //File file = new File(failinimi);
         // Kirjutamine
         PrintWriter pw = new PrintWriter(file);
 
