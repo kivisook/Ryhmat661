@@ -11,7 +11,7 @@ public class TestStart {
 
         // Teeme kontrolltöö ja tõmbame sinna sisse kõik ülesanded
         koostaKontrolltöö kt = new koostaKontrolltöö("KONTROLLTÖÖ 08.04.2017");
-        kt.lisaFailistÜlesanded1("ylesanded.txt", "arvutusülesanne");
+        kt.lisaFailistÜlesanded("ylesanded.txt", "arvutusülesanne");
 
         // vaatme, mis kontrolltöösse sai.
         System.out.println(kt);
