@@ -8,23 +8,25 @@ public class TestStart {
 
         // Teeme kontrolltöö ja tõmbame sinna sisse kõik ülesanded
         Kontrolltöö kt = new Kontrolltöö("KONTROLLTÖÖ 08.04.2017");
+        kt.lisaFailistÜlesanded("tekstülesanded.txt", "tekstülesanne");
         kt.lisaFailistÜlesanded("ylesanded.txt", "arvutusülesanne");
-        Kontrolltöö kt2 = new Kontrolltöö("KT2 tekstülesanded");
-        kt2.lisaFailistÜlesanded("tekstülesanded.txt", "tekstülesanne");
 
-        // vaatme, mis kontrolltöösse sai.
+        // kontrolliks võib vaadata, mis kontrolltöösse sai.
+        System.out.println("----- IMPORDITUD KONTROLLTÖÖ ON SELLLINE --------------");
         System.out.println(kt);
-        System.out.println(kt2);
 
-        // Tegeleme õpilastega. Loome varaiandid, tõmbame sinna õpilased
+        // Tegeleme õpilastega. Loome variandi 6a klassi jaoks ja impordime sinna õpilased
         Variandid klass6a = new Variandid();
         klass6a.loeNimekiri();
 
-        // saab testida nimekirja importi
-        //System.out.println(klass6a.kuvaVariandid());
+        // kontrolliks võib kuvada variandi ( ehk ülesanneteta nimekirja  ekraanile)
+        System.out.println("----- IMPORTISIN SELLISE NIMEKIRJA ---------------");
+        klass6a.kuvaVariandid();
 
-        klass6a.genereeriKõigile(kt, "KÕIK", 3);
-        //Testin ühte õpilast. lisan talle rohkem
+        System.out.println("----- VÄLJUNDID kõigiga töötamisel---------------");
+
+        klass6a.genereeriKõigile(kt, "JUHUSLIK", 3);
+        //Testin ühte õpilast. Ühele targale poisile annan rohkem ülesandeid
         klass6a.genereeriÜhele("3",kt, "KÕIK", 6);
 
         klass6a.kuvaVariandid(); //ekraanile
@@ -34,7 +36,29 @@ public class TestStart {
         klass6a.failVastused(); //faili
 
         klass6a.failidKõigile(); //  genereerib faildi kõigile
-        klass6a.failÜhele("3"); // genereerib ühele faili
+
+
+        // -- TÖÖ ÜHE ÜKSIKU LAPSE LISAMISEGA
+        System.out.println("----- VÄLJUNDID ühe õpilase Mary lisamisel---------------");
+
+        // Lisame ühe õpilase käsitsi  -- selle asemele tuleb meetod kirjuatda
+        klass6a.variant.add (new ÕpilaseTöö("9", "Mary Aas"));
+
+        //Genreerimse selle õpilasele õpilasele 6 ülesannnet algoritmi 'juhuslik' abil
+        klass6a.genereeriÜhele("9",kt,"JUHUSLIK",6);
+
+        // Genereerib ainult ühe õpilase faili
+        klass6a.failÜhele("9");
+
+        // uuendab vastuste ja variantide failid, ning kuvab ka tulemused ekraanle
+        klass6a.kuvaVariandid(); //ekraanile
+        klass6a.failVariandid(); // faili
+
+        klass6a.kuvaVastused(); //ekraanile
+        klass6a.failVastused(); //faili
+
+        // MUUD NÄITED
+        System.out.println("----- MUUD NÄITED---------------");
 
         //näide, küsimuse trükkimine ekraanile
         System.out.println(ArvutusÜlesanne.tükeldaÜlesanne("1000 10000+100= 1100"));
@@ -43,7 +67,7 @@ public class TestStart {
         Ülesanne a1 = new ArvutusÜlesanne("66", "666-66=", "600");
         System.out.println(a1.tükeldaÜlesanne());
 
-        Ülesanne t1 = new TekstÜlesanne("77", "Kolmnurga nurkade summa on: ", "180 kraadi.");
+        Ülesanne t1 = new TekstÜlesanne("77", "Kui suur on kolmnurga nurkade summa? ", "360 kraadi.");
         System.out.println(t1.tükeldaÜlesanne());
 
 

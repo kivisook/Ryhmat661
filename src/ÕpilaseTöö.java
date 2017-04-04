@@ -50,7 +50,7 @@ public class ÕpilaseTöö {
         trükk += "KONTROLLTÖÖ"+ "\n\n";
 
         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-            trükk +=ülesanne.getID()+" "+ülesanne.trükiKüsimus()+"\n\n";
+            trükk +=ülesanne.getID()+": "+ülesanne.getKüsimus()+"\n\n";
         }
         pw.append(trükk);
         pw.close();
@@ -60,7 +60,7 @@ public class ÕpilaseTöö {
     public String trükiÕpilaseVastused() {
         String trükk = id + " " + Nimi + ":" ;
         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-            trükk += " ["+ülesanne.getID()+": " + ülesanne.trükiVastus()+"]";
+            trükk += " ["+ülesanne.getID()+": " + ülesanne.getVastus()+"]";
         }
         return trükk;
     }

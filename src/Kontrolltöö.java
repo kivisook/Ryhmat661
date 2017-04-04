@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Kontrolltöö {
     private String pealkiri;
-    private ArrayList<Ülesanne> ülesanded = new ArrayList<>();;
+    private ArrayList<Ülesanne> ülesanded = new ArrayList<>();
 
     // konstruktor
     public Kontrolltöö(String pealkiri) {

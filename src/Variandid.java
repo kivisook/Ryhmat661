@@ -28,7 +28,7 @@ public class Variandid {
         scanner.close();
     }
 
-    public void genereeriÜhele(ÕpilaseTöö õpilane, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+    public void genereeriÜhele(ÕpilaseTöö õpilane, Kontrolltöö kt, String algoritm, int ülesanneteArv ) {
         // tühjendab. kustutab varem genereritud variandid ära
         õpilane.kustutaÕpilaseÜlesanded();
         if (algoritm == "KÕIK"){
@@ -52,7 +52,7 @@ public class Variandid {
 
     }
     // sellega saab genererida ühele õpilasele käsurealt teades õpilase koodi.
-    public void genereeriÜhele(String õpilaseID, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+    public void genereeriÜhele(String õpilaseID, Kontrolltöö kt, String algoritm, int ülesanneteArv ) {
         for (ÕpilaseTöö seeÕpilane : variant) {
             // otsime õpilast, kelle id on õpilaseID
             if (seeÕpilane.getId().compareTo(õpilaseID) == 0) {
@@ -62,7 +62,7 @@ public class Variandid {
     }
 
 
-    public void genereeriKõigile(koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+    public void genereeriKõigile(Kontrolltöö kt, String algoritm, int ülesanneteArv ) {
         // üle kogu variandi tabeli õpilaste
         for (ÕpilaseTöö õpilane : variant) {
             genereeriÜhele(õpilane, kt, algoritm,ülesanneteArv );

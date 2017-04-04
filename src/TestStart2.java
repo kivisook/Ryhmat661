@@ -23,19 +23,20 @@ public class TestStart2 {
 
 
         //ülesandeid saab ka ühekaupa sisestada
-        //Ülesanne Y1 = new ArvutusÜlesanne("esimene", "3+2=", "5");
+        Ülesanne Y1 = new ArvutusÜlesanne("esimene", "3+2=", "5");
 
-        //ArvutusÜlesanne.trükiÜlesanne("4+6");
-        //ArvutusÜlesanne.trükiVastus("10");
+        ArvutusÜlesanne.trükiÜlesanne("4+6");
+        ArvutusÜlesanne.trükiVastus("10");
+
 
 
         ÕpilaseTöö mary = new ÕpilaseTöö("1.õ", "Mary Aas");
-        for (int i = 0; i < 10; i++) {
-            mary.lisaÜlesanne(koostaKontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne").get(i));
-           // mary.lisaÜlesanne(koostaKontrolltöö.lisaFailistÜlesanded(file2, "tekstülesanne").get(i));
-        }
+        //nii enam ei saa. ja ühele õpilasele algsetest failidest ülesandeid lisada eiole ka vist vaja
+//        for (int i = 0; i < 10; i++) {
+//            mary.lisaÜlesanne(Kontrolltöö.lisaFailistÜlesanded(file1, "arvutusülesanne").get(i));
+//           // mary.lisaÜlesanne(koostaKontrolltöö.lisaFailistÜlesanded(file2, "tekstülesanne").get(i));
+//        }
 
-        System.out.println(mary.trükiÕpilasele());
         System.out.println(mary.trükiÕpilaseVastused());
 
     }
