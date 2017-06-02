@@ -7,16 +7,16 @@ public class TestStart {
     public static void main(String[] args) throws FileNotFoundException {
 
         // Teeme kontrolltöö ja tõmbame sinna sisse kõik ülesanded
-        Kontrolltöö kt = new Kontrolltöö("KONTROLLTÖÖ 08.04.2017");
-        kt.lisaFailistÜlesanded("tekstülesanded.txt", "tekstülesanne");
+        Kontrolltöö kt = new Kontrolltöö();
         kt.lisaFailistÜlesanded("ylesanded.txt", "arvutusülesanne");
+        kt.lisaFailistÜlesanded("tekstülesanded.txt", "tekstülesanne");
 
         // kontrolliks võib vaadata, mis kontrolltöösse sai.
-        System.out.println("----- IMPORDITUD KONTROLLTÖÖ ON SELLLINE --------------");
+        System.out.println("----- IMPORDITUD KONTROLLTÖÖ ON SELLINE --------------");
         System.out.println(kt);
 
         // Tegeleme õpilastega. Loome variandi 6a klassi jaoks ja impordime sinna õpilased
-        Variandid klass6a = new Variandid();
+        Variandid klass6a = new Variandid("Suur arvestustöö");
         klass6a.loeNimekiri();
 
         // kontrolliks võib kuvada variandi ( ehk ülesanneteta nimekirja  ekraanile)

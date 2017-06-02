@@ -32,25 +32,26 @@ public class ÕpilaseTöö {
 
     //väljastab selle õpilase ülesannete id-d
     public String trükiLeotelu() {
-        String trükk = id +" "+Nimi;
+        StringBuilder trükk = new StringBuilder();
+        trükk.append(id +" "+Nimi);
         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-            trükk += "  "+ülesanne.getID();
+            trükk.append("  "+ülesanne.getID());
         }
-        return trükk;
+        return trükk.toString();
     }
 
-    public void failÕpilasele() throws FileNotFoundException {
+    public void failÕpilasele(String pealkiri) throws FileNotFoundException {
         File file = new File("koostatud", this.Nimi+".txt");
         //File file = new File(failinimi);
         // Kirjutamine
         PrintWriter pw = new PrintWriter(file);
 
-        String trükk ="";
-        trükk +=Nimi+ "\n\n";
-        trükk += "KONTROLLTÖÖ"+ "\n\n";
+        StringBuilder trükk = new StringBuilder();
+        trükk.append(Nimi+ "\n\n");
+        trükk.append(pealkiri+ "\n\n");
 
         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-            trükk +=ülesanne.getID()+": "+ülesanne.getKüsimus()+"\n\n";
+            trükk.append(ülesanne.getID()+": "+ülesanne.getKüsimus()+"\n\n");
         }
         pw.append(trükk);
         pw.close();
@@ -58,11 +59,12 @@ public class ÕpilaseTöö {
 
 
     public String trükiÕpilaseVastused() {
-        String trükk = id + " " + Nimi + ":" ;
+        StringBuilder trükk = new StringBuilder();
+        trükk.append(id + " " + Nimi + ":");
         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-            trükk += " ["+ülesanne.getID()+": " + ülesanne.getVastus()+"]";
+            trükk.append(" ["+ülesanne.getID()+": " + ülesanne.getVastus()+"]");
         }
-        return trükk;
+        return trükk.toString();
     }
 
     public String getId() {
@@ -76,10 +78,11 @@ public class ÕpilaseTöö {
     @Override
     // siin on praegu sama kood, mis trükiLeotelu()
     public String toString() {
-        String trükk = id +" "+Nimi;
+        StringBuilder trükk = new StringBuilder();
+        trükk.append(id +" "+Nimi);
         for (Ülesanne ülesanne : õpilaseÜlesanded) {
-            trükk += "  "+ülesanne.getID();
+            trükk.append("  "+ülesanne.getID());
         }
-        return trükk;
+        return trükk.toString();
     }
 }

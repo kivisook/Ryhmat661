@@ -53,10 +53,10 @@ sisendparameeter ülesannete fail, ( vist ka ülesannete tüüp)
 -- loeb failist ülesanded kasutades klasside 'ülesanded' ja 'almaülesanded' tükeldamist ja lisab ülesanded kontrolltööle. 
 
 ------
---- class õpilaseTöö
+--- class ÕpilaseTöö
 private String id; //võib olla kood, Järjekorra nr....
 private String Nimi;
-private ArrayList <Ülesanded> õpilaseÜlesanded;  // õpilasele määratud ülesanded
+private ArrayList <Ülesanne> õpilaseÜlesanded;  // õpilasele määratud ülesanded
 
 meetodid
 * trükiLeotelu //väljastab selle õpilase ülesannete id-d
@@ -64,7 +64,7 @@ meetodid
 
 ------ 
 --- class Variandid
-private ArrayList <ÕpilaseTöö> 
+private ArrayList <ÕpilaseTöö>
 
 meetodid: 
 * loeNimekiri  //loeb ja tükeldab nimekirja 

@@ -7,17 +7,14 @@ import java.util.Scanner;
  * Created by kersti on 20.03.17.
  */
 public class Kontrolltöö {
-    private String pealkiri;
     private ArrayList<Ülesanne> ülesanded = new ArrayList<>();
 
-    // konstruktor
-    public Kontrolltöö(String pealkiri) {
-        this.pealkiri = pealkiri;
+    public Kontrolltöö() {
     }
+
     // konstruktor
-    public Kontrolltöö(String pealkiri, ArrayList<Ülesanne> ülesanded) {
+    public Kontrolltöö(ArrayList<Ülesanne> ülesanded) {
         this.ülesanded = ülesanded;
-        this.pealkiri = pealkiri;
     }
 
     public void lisaFailistÜlesanded(String failinimi, String tüüp) throws FileNotFoundException {
@@ -49,10 +46,7 @@ public class Kontrolltöö {
 
     @Override
     public String toString() {
-        return "Kontrolltöö{" +
-                '\''+ pealkiri + '\'' +
-                ", ülesanded=" + ülesanded +
-                '}';
+        return "Ülesanded=" + ülesanded ;
     }
 
     public ArrayList<Ülesanne> getÜlesanded() {
