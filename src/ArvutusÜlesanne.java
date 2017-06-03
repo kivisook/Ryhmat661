@@ -33,7 +33,7 @@ public class ArvutusÜlesanne extends Ülesanne {
         System.out.println(üksülesanne);
     }
 
-    public static void trükiVastus(String üksvastus) {  //kirjutab vastustefaili ühe vastuse juurde
+    public static void trükiVastus(String üksvastus) {  //trükib vastuse
         System.out.println(üksvastus);
     }
 

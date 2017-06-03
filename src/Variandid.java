@@ -9,11 +9,17 @@ import java.util.Scanner;
  * Created by lindsirj on 1.04.2017.
  */
 public class Variandid {
+    String pealkiri;
     ArrayList<ÕpilaseTöö> variant = new ArrayList<>();
+
+    public Variandid(String pealkiri) {
+        this.pealkiri = pealkiri;
+    }
 
     public ArrayList<ÕpilaseTöö> getVariant() {
         return variant;
     }
+
 
     // Õpilaste nimikirja lugemine failist
     public void loeNimekiri() throws FileNotFoundException {
@@ -28,7 +34,7 @@ public class Variandid {
         scanner.close();
     }
 
-    public void genereeriÜhele(ÕpilaseTöö õpilane, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+    public void genereeriÜhele(ÕpilaseTöö õpilane, Kontrolltöö kt, String algoritm, int ülesanneteArv ) {
         // tühjendab. kustutab varem genereritud variandid ära
         õpilane.kustutaÕpilaseÜlesanded();
         if (algoritm == "KÕIK"){
@@ -51,8 +57,8 @@ public class Variandid {
         }
 
     }
-    // sellega saab genererida ühele õpilasele käsurealt teades õpilase koodi.
-    public void genereeriÜhele(String õpilaseID, koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+    // sellega saab genererida ühele õpilasele faili, kui ette anda õpilase kood.
+    public void genereeriÜhele(String õpilaseID, Kontrolltöö kt, String algoritm, int ülesanneteArv ) {
         for (ÕpilaseTöö seeÕpilane : variant) {
             // otsime õpilast, kelle id on õpilaseID
             if (seeÕpilane.getId().compareTo(õpilaseID) == 0) {
@@ -62,7 +68,7 @@ public class Variandid {
     }
 
 
-    public void genereeriKõigile(koostaKontrolltöö kt, String algoritm, int ülesanneteArv ) {
+    public void genereeriKõigile(Kontrolltöö kt, String algoritm, int ülesanneteArv ) {
         // üle kogu variandi tabeli õpilaste
         for (ÕpilaseTöö õpilane : variant) {
             genereeriÜhele(õpilane, kt, algoritm,ülesanneteArv );
@@ -73,11 +79,14 @@ public class Variandid {
 
     //väljastab nimekirja, kus on õpilaste nimekiri ja tema variandid.
     public String variandid(){
-        String trükk = "VARIANTIDE LEHT \n";
+        StringBuilder trükk = new StringBuilder();
+        trükk.append( "VARIANTIDE LEHT \n");
+        trükk.append(this.pealkiri+"\n");
+
         for (ÕpilaseTöö õpilaseTöö : variant) {
-            trükk += õpilaseTöö.trükiLeotelu() +'\n';
+            trükk.append(õpilaseTöö.trükiLeotelu() +'\n');
         }
-        return trükk;
+        return trükk.toString();
     }
 
     public void kuvaVariandid(){
@@ -98,7 +107,7 @@ public class Variandid {
 
     public void failidKõigile() throws FileNotFoundException {
         for (ÕpilaseTöö õpilaseTöö : variant) {
-            õpilaseTöö.failÕpilasele();
+            õpilaseTöö.failÕpilasele(this.pealkiri);
         }
     }
 
@@ -106,7 +115,7 @@ public class Variandid {
         for (ÕpilaseTöö seeÕpilane : variant) {
             // otsime õpilast, kelle id on õpilaseID
             if (seeÕpilane.getId().compareTo(õpilaseID) == 0) {
-                seeÕpilane.failÕpilasele();
+                seeÕpilane.failÕpilasele(this.pealkiri);
             }
         }
     }
@@ -114,11 +123,13 @@ public class Variandid {
     //-------------- Vastuste kuvamine ja trükk faili  -----------------
 
     public String vastused(){
-        String trükk = "VASTUSTE LEHT \n";
+        StringBuilder trükk = new StringBuilder();
+        trükk.append("VASTUSTE LEHT \n");
+        trükk.append(this.pealkiri+"\n");
         for (ÕpilaseTöö õpilaseTöö : variant) {
-            trükk += õpilaseTöö.trükiÕpilaseVastused() +'\n';
+            trükk.append(õpilaseTöö.trükiÕpilaseVastused() +'\n');
         }
-        return trükk;
+        return trükk.toString();
     }
 
     public void kuvaVastused(){
@@ -138,8 +149,6 @@ public class Variandid {
 
     @Override
     public String toString() {
-        return "Variandid{" +
-                "variant=" + variant +
-                '}';
+        return pealkiri+": "+ variant ;
     }
 }

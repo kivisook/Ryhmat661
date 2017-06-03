@@ -4,9 +4,6 @@ import java.util.ArrayList;
  * Created by kersti on 01.04.17.
  */
 public class TekstÜlesanne extends Ülesanne {
-    private String ID;
-    private String küsimus;
-    private String vastus;
 
     public TekstÜlesanne(String ID, String küsimus, String vastus) {super(ID, küsimus, vastus);}
 
@@ -20,13 +17,21 @@ public class TekstÜlesanne extends Ülesanne {
     }
 
 
-    public static Ülesanne tükeldaÜlesanne (String ülesanderida, String vastuserida) {
+    public static Ülesanne tükeldaÜlesanne (String ülesanderida, String vastuserida)  {
 
-        String[] tükid1 = ülesanderida.split("  ");   //osad on eraldatud tab-iga
+        // maci jaoks:
+        //   String[] tükid1 = ülesanderida.split("  ");   //osad on eraldatud tab-iga  MA
+        // windowsi jaoks
+        String[] tükid1 = ülesanderida.split("\t");   //osad on eraldatud tab-iga
+
         String indeks = tükid1[0];
         String ülesandetekst = tükid1[1];            //ülesanded on esimesel real teisel kohal
 
-        String[] tükid2 = vastuserida.split("   ");
+        // maci jaoks:
+        //String[] tükid2 = vastuserida.split("   ");
+        //windowsi jaoks:
+        String[] tükid2 = vastuserida.split("\t");
+
         String vastus = tükid2[1];                   //vastused on teisel real teisel kohal
 
         Ülesanne yl = new TekstÜlesanne(indeks, ülesandetekst, vastus);
@@ -34,11 +39,16 @@ public class TekstÜlesanne extends Ülesanne {
 
     }
 
-    public static void  trükiÜlesanne(String üksülesanne) {
+    public static void  trükiÜlesanne(String üksülesanne) { //trükib ülesande teksti
         System.out.println(üksülesanne);
     }
 
-    public static void trükiVastus(String üksvastus) {
+    public static void trükiVastus(String üksvastus) {  //trükib vastuse
         System.out.println(üksvastus);
+    }
+
+    @Override
+    public String getKüsimus (){
+        return super.getKüsimus();
     }
 }

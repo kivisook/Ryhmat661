@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-55.58786610878667" y="672.4309623430962">TestStart</node>
+    <node x="733.060669456067" y="523.1589958158997">ÕpilaseTöö</node>
+    <node x="763.8242677824269" y="251.7594142259413">Kontrolltöö</node>
+    <node x="299.10460251046027" y="253.17991631799163">TekstÜlesanne</node>
+    <node x="-119.89539748953973" y="267.1799163179916">ArvutusÜlesanne</node>
+    <node x="236.5209205020921" y="523.1589958158995">Variandid</node>
+    <node x="105.35460251046027" y="2.17991631799163">Ülesanne</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="TekstÜlesanne" target="Ülesanne">
+      <point x="0.0" y="-100.5" />
+      <point x="501.10460251046027" y="228.17991631799163" />
+      <point x="382.85460251046027" y="228.17991631799163" />
+      <point x="92.5" y="100.5" />
+    </edge>
+    <edge source="ArvutusÜlesanne" target="Ülesanne">
+      <point x="0.0" y="-86.5" />
+      <point x="79.60460251046027" y="228.17991631799163" />
+      <point x="197.85460251046027" y="228.17991631799163" />
+      <point x="-92.5" y="100.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9174664107485605" x="463.62133891213387" y="391.64958158995813" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>Project Files</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,6 +1,10 @@
-Ylesanne1   Milline arv tuleks liita arvule -3, et saada summaks 54?
-Vastus1 See arv on 57.
-Ylesanne2   Hommikul näitas termomeeter -8 kraadi. Mitu kraadi näitab termomeeter õhtul, kui temperatuur tõusis päeva jooksul 3 kraadi võrra?
-Vastus2 Õhtul näitab termomeeter -5 kraadi.
-Ylesanne3   Ukul oli 90 pähklit. Ta sõi oma pähklitest ära 40%. Mitu pähklit jäi järele?
-Vastus3 Alles jäi 54 pähklit.
+T1	Milline arv tuleks liita arvule -3, et saada summaks 54?
+V1	See arv on 57.
+T2	Hommikul näitas termomeeter -8 kraadi. Mitu kraadi näitab termomeeter õhtul, kui temperatuur tõusis päeva jooksul 3 kraadi võrra?
+V2	Õhtul näitab termomeeter -5 kraadi.
+T3	Ukul oli 90 pähklit. Ta sõi oma pähklitest ära 40%. Mitu pähklit jäi järele?
+V3	Alles jäi 54 pähklit.
+T4	Millal algab kevad?
+V4	Pärasat eksameid.
+T5	Mitu kraadi on viisnurga nurkade summa?
+V5	360°
