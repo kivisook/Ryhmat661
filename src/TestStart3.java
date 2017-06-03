@@ -252,7 +252,7 @@ public class TestStart3 extends Application{
                     public void handle(KeyEvent keyEvent) {
                         if (keyEvent.getCode() == KeyCode.ENTER) {
                             jätaMeelde2.setText(sisse1.getText());
-                            jätaMeelde2.setVisible(true);
+                            //jätaMeelde2.setVisible(true);
                         }
                     }
                 });
@@ -268,7 +268,7 @@ public class TestStart3 extends Application{
                 valik.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
                         tagasiside2.setText(newValue);
-                        tagasiside.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
+                        //tagasiside.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
                     }
                 });
 
@@ -277,7 +277,7 @@ public class TestStart3 extends Application{
                 valik2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
                         tagasiside2.setText(newValue);
-                        tagasiside2.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
+                        //tagasiside2.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
                     }
                 });
 
@@ -288,17 +288,15 @@ public class TestStart3 extends Application{
 
                         try {
                             Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
-                            //kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
+                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
 
                             //nupu töötamise kontroll
-
                             Variandid klass7a = new Variandid();
                             klass7a.loeNimekiri();
+                            //klass7a.genereeriÜhele("1", kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
+                            //klass7a.failÜhele("1"); //kontroll, et teeb faili
+                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
                             //klass7a.failidKõigile();
-                            //klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText()))); //koostab nimekirja 1. kohal olevale õpilasele töö
-                            //klass7a.failVariandid(); // faili
-                            //klass7a.failVastused(); //faili
-                            klass7a.genereeriÜhele("1", kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText()))); // genereerib ühele faili
 
 
                         } catch (FileNotFoundException e) {
@@ -347,6 +345,68 @@ public class TestStart3 extends Application{
                 Text seletus3 = new Text("Igale õpilasele tema nimeline fail, kus on ülesanded.");
                 Button nupp3_3 = new Button("Salvesta õpilaste failid");
 
+                nupp3_1.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                    public void handle(ActionEvent event) {
+
+                        try {
+                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
+
+                            Variandid klass7a = new Variandid();
+                            klass7a.loeNimekiri();
+                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
+                            klass7a.failidKõigile();
+                            klass7a.failVariandid();
+                            klass7a.failVastused();
+
+
+                        } catch (FileNotFoundException e) {
+                            //e.printStackTrace();
+                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                        }
+                    }
+                });
+
+                nupp3_2.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                    public void handle(ActionEvent event) {
+
+                        try {
+                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
+
+                            Variandid klass7a = new Variandid();
+                            klass7a.loeNimekiri();
+                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
+                            klass7a.failVariandid();
+                            //shell aknasse veel vaja panna
+
+                        } catch (FileNotFoundException e) {
+                            //e.printStackTrace();
+                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                        }
+                    }
+                });
+
+                nupp3_3.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                    public void handle(ActionEvent event) {
+
+                        try {
+                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
+
+                            Variandid klass7a = new Variandid();
+                            klass7a.loeNimekiri();
+                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
+                            klass7a.failVastused();
+                            //shell aknasse veel vaja panna
+
+                        } catch (FileNotFoundException e) {
+                            //e.printStackTrace();
+                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                        }
+                    }
+                });
+
                 //osade lisamine ruudustikku
                 grid3.add(tekst3,0,0);
                 grid3.add(nupp3_1, 0, 1);
@@ -373,4 +433,3 @@ public class TestStart3 extends Application{
     }
 
 }
-
