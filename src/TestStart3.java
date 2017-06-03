@@ -185,7 +185,7 @@ public class TestStart3 extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            Kontrolltöö kt = new Kontrolltöö();
                             kt.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()),tagasiside.getText().toString());
                         } catch (FileNotFoundException e) {
                             System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
@@ -262,9 +262,9 @@ public class TestStart3 extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            Kontrolltöö kt1 = new Kontrolltöö();
                             kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid();
+                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
                             klass7a.loeNimekiri();
                             klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
 
@@ -315,9 +315,9 @@ public class TestStart3 extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            Kontrolltöö kt1 = new Kontrolltöö();
                             kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid();
+                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
                             klass7a.loeNimekiri();
                             klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
                             klass7a.failidKõigile();
@@ -334,9 +334,9 @@ public class TestStart3 extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            Kontrolltöö kt1 = new Kontrolltöö();
                             kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid();
+                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
                             klass7a.loeNimekiri();
                             klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
                             klass7a.failVastused();
@@ -352,9 +352,9 @@ public class TestStart3 extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            Kontrolltöö kt1 = new Kontrolltöö();
                             kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid();
+                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
                             klass7a.loeNimekiri();
                             klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
                             klass7a.failidKõigile();
