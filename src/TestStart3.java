@@ -51,6 +51,7 @@ public class TestStart3 extends Application{
         //pealkirja sisestuse koha kohta info
         Text pealkiri = new Text("Kontrolltöö pealkiri (sisesta ja vajuta ENTER)");
         Text jätaMeelde = new Text("");     //siia tuleb sisestatud pealkiri
+        jätaMeelde.setVisible(false);
         TextField sisestaPealkiri = new TextField();    //pealkirja sisestamise tekstiväli
 
         // vaja meelde jätta sisestatud pealkiri! Vajutatakse ENTER
