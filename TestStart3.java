@@ -39,7 +39,7 @@ public class TestStart3 extends Application{
         Text tekst = new Text("Kontrolltöö variantide generaator");
         Text info = new Text("Projekti töökataloogis peab olema fail nimega 'nimekiri.txt'");
         //pealkirja sisestuse koha kohta info
-        Text pealkiri = new Text("Kontrolltöö pealkiri (vajuta ENTER)");
+        Text pealkiri = new Text("Kontrolltöö pealkiri (sisesta ja vajuta ENTER)");
         Text jätaMeelde = new Text("");     //siia tuleb sisestatud pealkiri
         TextField sisestaPealkiri = new TextField();    //pealkirja sisestamise tekstiväli
 
@@ -131,7 +131,7 @@ public class TestStart3 extends Application{
                 //sisuga täitmine
                 Text tekst1 = new Text("Ülesannete haldamine");
                 Text info1 = new Text("KT ülesannete laadimine failist.");
-                Text pealkiri1 = new Text("Ülesannete faili nimi (vajuta Enter)");
+                Text pealkiri1 = new Text("Ülesannete faili nimi (sisesta ja vajuta Enter)");
                 TextField sisesta1 = new TextField();
 
                 Text jätaMeelde1 = new Text("");     //siia tuleb sisestatud pealkiri
