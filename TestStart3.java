@@ -20,7 +20,7 @@ public class TestStart3 extends Application{
     @Override
     public void start(Stage peaLava) {
 
-         //Esimese Pealava võrgustik
+          //Esimese Pealava võrgustik
         GridPane grid = new GridPane();
         grid.setVgap(20);
         grid.setHgap(5);
@@ -42,7 +42,6 @@ public class TestStart3 extends Application{
         Text pealkiri = new Text("Kontrolltöö pealkiri (vajuta ENTER)");
         Text jätaMeelde = new Text("");     //siia tuleb sisestatud pealkiri
         TextField sisestaPealkiri = new TextField();    //pealkirja sisestamise tekstiväli
-
 
         // vaja meelde jätta sisestatud pealkiri! Vajutatakse ENTER
         sisestaPealkiri.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -95,17 +94,19 @@ public class TestStart3 extends Application{
                 col1.setPercentWidth(50);
                 ColumnConstraints col2 = new ColumnConstraints();
                 col2.setPercentWidth(50);
-                grid.getColumnConstraints().addAll(col1,col2);
+                grid.getColumnConstraints().addAll(col1, col2);
 
                 //sisuga täitmine
                 Text tekst = new Text("Suur Arvestustöö");
                 Text info = new Text("siia peab tekkima tekst, kui laadimine õnnestus");
 
                 //osade lisamine ruudustikku
-                grid.add(tekst,0,0);
+                grid.add(tekst, 0, 0);
                 grid.add(info, 0, 1);
                 Button nuppLõpeta = new Button("Lõpeta töö");
-                grid.add(nuppLõpeta,1,4);
+                grid.add(nuppLõpeta, 1, 4);
+
+
                 //-------------------
                 //Sisu võrgustik - Ülesannete haldamine
                 GridPane grid1 = new GridPane();
@@ -125,19 +126,56 @@ public class TestStart3 extends Application{
                 ColumnConstraints col1_3 = new ColumnConstraints();
                 //col1_3.setPercentWidth(20);
                 col1_3.setPrefWidth(100.0);
-                grid1.getColumnConstraints().addAll(col1_1,col1_2,col1_3);
+                grid1.getColumnConstraints().addAll(col1_1, col1_2, col1_3);
 
                 //sisuga täitmine
                 Text tekst1 = new Text("Ülesannete haldamine");
                 Text info1 = new Text("KT ülesannete laadimine failist.");
-                Text pealkiri1 = new Text("Ülesannete faili nimi");
+                Text pealkiri1 = new Text("Ülesannete faili nimi (vajuta Enter)");
                 TextField sisesta1 = new TextField();
+
+                Text jätaMeelde1 = new Text("");     //siia tuleb sisestatud pealkiri
+                jätaMeelde1.setVisible(false);
+
+                // vaja meelde jätta sisestatud pealkiri! Vajutatakse ENTER
+                sisesta1.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                    public void handle(KeyEvent keyEvent) {
+                        if (keyEvent.getCode() == KeyCode.ENTER) {
+                            jätaMeelde1.setText("Pealkiri: " + sisesta1.getText());
+                            jätaMeelde1.setVisible(true);
+                        }
+                    }
+                });
+
                 Text pealkiri2 = new Text("Ülesannete tüüp");
                 ChoiceBox valik = new ChoiceBox();
                 ObservableList<String> sisu = FXCollections.observableArrayList();
                 sisu.addAll("Arvutusülesanne", "Tekstülesanne");
                 valik.setItems(sisu);
+
+                Label tagasiside = new Label("");      //esimeses reas on esitatav aküsimustik
+                tagasiside.setVisible(false);               //algul pole nähtav, ainult kontrollimise eesmärgil praegu
+
+                valik.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
+                        tagasiside.setText(newValue);
+                        tagasiside.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
+                    }
+                });
+
+
                 Button nupp1 = new Button("Failist laadimine");
+
+                nupp1.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                    public void handle(ActionEvent event) {
+                        Kontrolltöö kt = new Kontrolltöö(jätaMeelde.toString());
+                        try {
+                            kt.lisaFailistÜlesanded(jätaMeelde1.toString(), tagasiside.toString());
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
                 //osade lisamine ruudustikku
                 grid1.add(tekst1,0,0);
@@ -146,6 +184,8 @@ public class TestStart3 extends Application{
                 grid1.add(sisesta1,1,2);
                 grid1.add(pealkiri2,0,3);
                 grid1.add(valik,1,3);
+                grid1.add(tagasiside,0,4);
+                grid1.add(jätaMeelde1,1,4);
                 grid1.add(nupp1,2,4);
 
                 //-------------------
@@ -159,13 +199,10 @@ public class TestStart3 extends Application{
                 grid2.setPadding(new Insets(10, 10, 10, 10)); //Võrgustiku kaugus  servadest
 
                 ColumnConstraints col2_1 = new ColumnConstraints();
-                //col2_1.setPercentWidth(60);
                 col2_1.setPrefWidth(200.0);
                 ColumnConstraints col2_2 = new ColumnConstraints();
-                //col2_2.setPercentWidth(20);
                 col2_2.setPrefWidth(100.0);
                 ColumnConstraints col2_3 = new ColumnConstraints();
-                //col2_3.setPercentWidth(20);
                 col2_3.setPrefWidth(100.0);
                 grid2.getColumnConstraints().addAll(col2_1,col2_2,col2_3);
 
@@ -173,14 +210,36 @@ public class TestStart3 extends Application{
                 Text tekst2 = new Text("Komplekteeri");
                 Text info2 = new Text("Ülesannete jagamine õpilastele");
                 Text info3 = new Text("Uue komplekteerimise korral kirjutatakse andmed üle.");
-                Text kiri1 = new Text("Ülesannete arv ühele õpilasele:");
+                Text kiri1 = new Text("Ülesannete arv ühele õpilasele (vajuta ENTER): ");
                 TextField sisse1 = new TextField();
+                Text jätaMeelde2 = new Text("");     //siia tuleb sisestatud arv
+                jätaMeelde2.setVisible(false);
+
+                // vaja meelde jätta sisestatud arv! Vajutatakse ENTER
+                sisse1.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                    public void handle(KeyEvent keyEvent) {
+                        if (keyEvent.getCode() == KeyCode.ENTER) {
+                            jätaMeelde2.setText("Pealkiri: " + sisse1.getText());
+                            jätaMeelde2.setVisible(true);
+                        }
+                    }
+                });
                 Text kiri2 = new Text("Vali algoritm");
                 ChoiceBox valik2 = new ChoiceBox();
                 ObservableList<String> sisu2 = FXCollections.observableArrayList();
                 sisu2.addAll("JUHUSLIK", "KÕIK");
                 valik2.setItems(sisu2);
                 Button nupp2 = new Button("Genereeri");
+
+                Label tagasiside2 = new Label("");      //esimeses reas on esitatav aküsimustik
+                tagasiside2.setVisible(false);               //algul pole nähtav, ainult kontrollimise eesmärgil praegu
+
+                valik2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
+                        tagasiside2.setText(newValue);
+                        tagasiside2.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
+                    }
+                });
 
                 //osade lisamine ruudustikku
                 grid2.add(tekst2,0,0);
@@ -190,6 +249,8 @@ public class TestStart3 extends Application{
                 grid2.add(sisse1,1,3);
                 grid2.add(kiri2,0,4);
                 grid2.add(valik2,1,4);
+                grid2.add(tagasiside2, 0, 5);   //asukoht, hiljem võib kustustada
+                grid2.add(jätaMeelde2,1,5);     //asukoht, hiljem võib kustustada)
                 grid2.add(nupp2,2,5);
 
                 //-------------------
