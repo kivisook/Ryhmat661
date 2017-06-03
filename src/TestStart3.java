@@ -30,7 +30,7 @@ public class TestStart3 extends Application{
     @Override
     public void start(Stage peaLava) {
 
-        //Esimese Pealava võrgustik
+       //Esimese Pealava võrgustik
         GridPane grid = new GridPane();
         grid.setVgap(20);
         grid.setHgap(5);
@@ -201,6 +201,7 @@ public class TestStart3 extends Application{
                             klass7a.failVastused(); //faili
                             klass7a.failÜhele("1"); // genereerib ühele faili
                             */
+
                         } catch (FileNotFoundException e) {
                             //e.printStackTrace();
                             System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
@@ -250,7 +251,7 @@ public class TestStart3 extends Application{
                 sisse1.setOnKeyPressed(new EventHandler<KeyEvent>() {
                     public void handle(KeyEvent keyEvent) {
                         if (keyEvent.getCode() == KeyCode.ENTER) {
-                            jätaMeelde2.setText("Pealkiri: " + sisse1.getText());
+                            jätaMeelde2.setText(sisse1.getText());
                             jätaMeelde2.setVisible(true);
                         }
                     }
@@ -260,15 +261,50 @@ public class TestStart3 extends Application{
                 ObservableList<String> sisu2 = FXCollections.observableArrayList();
                 sisu2.addAll("JUHUSLIK", "KÕIK");
                 valik2.setItems(sisu2);
-                Button nupp2 = new Button("Genereeri");
 
                 Label tagasiside2 = new Label("");      //esimeses reas on esitatav aküsimustik
                 tagasiside2.setVisible(false);               //algul pole nähtav, ainult kontrollimise eesmärgil praegu
+
+                valik.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                    public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
+                        tagasiside2.setText(newValue);
+                        tagasiside.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
+                    }
+                });
+
+                Button nupp2 = new Button("Genereeri");
 
                 valik2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                     public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
                         tagasiside2.setText(newValue);
                         tagasiside2.setVisible(true);    // ainult kontrolliks, kas tuli õige valik
+                    }
+                });
+
+                //genereeri nupu tegevus
+
+                nupp2.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                    public void handle(ActionEvent event) {
+
+                        try {
+                            Kontrolltöö kt1 = new Kontrolltöö(String.valueOf(jätaMeelde.getText()));
+                            //kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
+
+                            //nupu töötamise kontroll
+
+                            Variandid klass7a = new Variandid();
+                            klass7a.loeNimekiri();
+                            //klass7a.failidKõigile();
+                            //klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText()))); //koostab nimekirja 1. kohal olevale õpilasele töö
+                            //klass7a.failVariandid(); // faili
+                            //klass7a.failVastused(); //faili
+                            klass7a.genereeriÜhele("1", kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText()))); // genereerib ühele faili
+
+
+                        } catch (FileNotFoundException e) {
+                            //e.printStackTrace();
+                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                        }
                     }
                 });
 
