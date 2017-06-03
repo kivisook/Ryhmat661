@@ -105,6 +105,14 @@ public class TestStart3 extends Application{
                 grid.add(info, 0, 1);
                 Button nuppLõpeta = new Button("Lõpeta töö");
                 grid.add(nuppLõpeta, 1, 4);
+                
+                //kui vajutatakse lõpetamise nuppu:
+                nuppLõpeta.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                    public void handle(ActionEvent event) {
+                        suurLava.hide();
+                        //ja vaja, et mingi tagasiside oleks ka veel?
+                    }
+                });
 
 
                 //-------------------
