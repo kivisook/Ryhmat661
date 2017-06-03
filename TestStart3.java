@@ -20,7 +20,7 @@ public class TestStart3 extends Application{
     @Override
     public void start(Stage peaLava) {
 
-        //Esimese Pealava võrgustik
+         //Esimese Pealava võrgustik
         GridPane grid = new GridPane();
         grid.setVgap(20);
         grid.setHgap(5);
@@ -39,10 +39,19 @@ public class TestStart3 extends Application{
         Text tekst = new Text("Kontrolltöö variantide generaator");
         Text info = new Text("Projekti töökataloogis peab olema fail nimega 'nimekiri.txt'");
         //pealkirja sisestuse koha kohta info
-        Text pealkiri = new Text("Kontrolltöö pealkiri");
+        Text pealkiri = new Text("Kontrolltöö pealkiri (vajuta ENTER)");
+        Text jätaMeelde = new Text("");     //siia tuleb sisestatud pealkiri
         TextField sisestaPealkiri = new TextField();    //pealkirja sisestamise tekstiväli
-        
-        // vaja meelde jätta sisestatud pealkiri!
+
+
+        // vaja meelde jätta sisestatud pealkiri! Vajutatakse ENTER
+        sisestaPealkiri.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                    jätaMeelde.setText("Pealkiri: " + sisestaPealkiri.getText());
+                }
+            }
+        });
 
         //nupp Kontrolltöö loomiseks
         Button kontrolliNupp = new Button("Loo uus kontrolltöö");
@@ -60,6 +69,7 @@ public class TestStart3 extends Application{
         grid.add(pealkiri, 0, 2);
         grid.add(sisestaPealkiri, 1, 2);
         grid.add(kontrolliNupp, 1, 3);
+        grid.add(jätaMeelde,0,3);   //algul on tühi
 
         Scene stseen1 = new Scene(grid, 600, 300, Color.SNOW);
         peaLava.setTitle("Generaator");
@@ -233,4 +243,6 @@ public class TestStart3 extends Application{
             }
         });
     }
+
 }
+
