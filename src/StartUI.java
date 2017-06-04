@@ -31,8 +31,12 @@ public class StartUI extends Application{
     }
     @Override
     public void start(Stage peaLava) {
+        // loome üldised klasssi, millele töö käigus andmeid lisatakse
+        Kontrolltöö ktÜlesanded = new Kontrolltöö();
+        Variandid klass = new Variandid();
 
         //-------Esimene pealava--------
+
 
         GridPane grid = new GridPane();
         grid.setVgap(20);
@@ -42,16 +46,16 @@ public class StartUI extends Application{
 
         //Võrgustiku veergude laiused protsentides
         ColumnConstraints col1 = new ColumnConstraints();
-        col1.setPercentWidth(35);
+        col1.setPercentWidth(50);
         ColumnConstraints col2 = new ColumnConstraints();
-        col2.setPercentWidth(65);
+        col2.setPercentWidth(50);
         grid.getColumnConstraints().addAll(col1, col2);
 
         //võrgustiku sisu
         Text tekst = new Text("Kontrolltöö variantide generaator");
         tekst.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         Text info = new Text("Projekti töökataloogis peab olema fail nimega 'nimekiri.txt'");
-        Text pealkiri = new Text("Sisesta kontrolltöö pealkiri");
+        Text pealkiri = new Text("Sisesta kontrolltöö pealkiri (vajuta ENTER):");
         TextField sisestaPealkiri = new TextField();    //pealkirja sisestamise tekstiväli
         Text jätaMeelde = new Text("");     //siia jäetakse meelde sisestatud pealkiri
         jätaMeelde.setVisible(true);
@@ -97,9 +101,17 @@ public class StartUI extends Application{
 
         peaLava.setOnHiding(new EventHandler<WindowEvent>() {
 
-
-
             public void handle(WindowEvent event) {
+
+                // alustame sellest, et loome klassi, eelmisel lehel antud nimega
+                Variandid klass = new Variandid(sisestaPealkiri.getText());
+                try {
+                    klass.loeNimekiri();
+                    System.out.println("Imporditud: " + klass);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
 
                 //uus lava uue kujundusega
                 Stage suurLava = new Stage();
@@ -135,7 +147,7 @@ public class StartUI extends Application{
                 nuppLõpeta.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
                     public void handle(ActionEvent event) {
                         suurLava.hide();
-                        //ja vaja veel, et mingi tagasiside oleks ka shell aknas!
+                        System.out.println("Head päeva");
                     }
                 });
 
@@ -199,8 +211,10 @@ public class StartUI extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt = new Kontrolltöö();
-                            kt.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()),tagasiside.getText().toString());
+                            // siin on ainult failide lisamine. ktÜlesanded on loodud rakenduse avamisel
+                            ktÜlesanded.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()),tagasiside.getText().toString());
+                            System.out.println("Lisasin ülesandeid juurde failist "+ String.valueOf(jätaMeelde1.getText()));
+                            System.out.println(ktÜlesanded);
                         } catch (FileNotFoundException e) {
                             System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
                         }
@@ -246,7 +260,7 @@ public class StartUI extends Application{
 
                 Text info2 = new Text("Ülesannete jagamine õpilastele");
                 Text info3 = new Text("Uue komplekteerimise korral kirjutatakse andmed üle.");
-                Text kiri1 = new Text("Ülesannete arv ühele õpilasele (vajuta ENTER): ");
+                Text kiri1 = new Text("Ülesannete arv ühele õpilasele(vajuta ENTER): ");
                 TextField sisse1 = new TextField();
                 Text jätaMeelde2 = new Text("");     //siia tuleb sisestatud arv
                 jätaMeelde2.setVisible(true);
@@ -282,17 +296,10 @@ public class StartUI extends Application{
                 //nupu 'genereeri' vajutamise tegevus
                 nupp2.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
                     public void handle(ActionEvent event) {
+                        klass.genereeriKõigile(ktÜlesanded, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
+                        klass.kuvaVariandid();
+                        System.out.println("Genereerisin eespool toodud variandid");
 
-                        try {
-                            Kontrolltöö kt1 = new Kontrolltöö();
-                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
-                            klass7a.loeNimekiri();
-                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
-
-                        } catch (FileNotFoundException e) {
-                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
-                        }
                     }
                 });
 
@@ -342,21 +349,15 @@ public class StartUI extends Application{
                 Button nupp3_3 = new Button("Salvesta \nõpilaste failid");
                 //nupp3_3.setWrapText(true);
 
-                nupp3_1.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
+                nupp3_1.setOnAction(new EventHandler<ActionEvent>() {     //variantide trükkimine
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö();
-                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
-                            klass7a.loeNimekiri();
-                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
-                            klass7a.failidKõigile();
-                            klass7a.failVariandid();
-                            //shell aknasse veel vaja panna?
-
+                            klass.failVariandid();
+                            klass.kuvaVariandid();
+                            System.out.println("Salvestasin eespool toodud variandid");
                         } catch (FileNotFoundException e) {
-                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                            System.out.println("Faili viga variantide kirjutamisel");
                         }
                     }
                 });
@@ -365,34 +366,22 @@ public class StartUI extends Application{
                     public void handle(ActionEvent event) {
 
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö();
-                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
-                            klass7a.loeNimekiri();
-                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
-                            klass7a.failVastused();
-                            //shell aknasse veel vaja panna?
-
+                            klass.failVastused();
+                            klass.kuvaVastused();
+                            System.out.println("Salvestasin eespool toodud vastused");
                         } catch (FileNotFoundException e) {
-                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                            System.out.println("Faili viga vastuste kirjutamisel");
                         }
                     }
                 });
 
                 nupp3_3.setOnAction(new EventHandler<ActionEvent>() {     //kui vajutatakse nuppu, läheb pealava peitu
                     public void handle(ActionEvent event) {
-
                         try {
-                            Kontrolltöö kt1 = new Kontrolltöö();
-                            kt1.lisaFailistÜlesanded(String.valueOf(jätaMeelde1.getText()), tagasiside.getText().toString());
-                            Variandid klass7a = new Variandid(String.valueOf(jätaMeelde.getText()));
-                            klass7a.loeNimekiri();
-                            klass7a.genereeriKõigile(kt1, String.valueOf(tagasiside2.getText()), Integer.parseInt(String.valueOf(jätaMeelde2.getText())));
-                            klass7a.failidKõigile();
-                            //shell aknasse veel vaja panna?
-
+                            klass.failidKõigile();
+                            System.out.println("Trükkisin kõigle failid kataloogi 'koostatud'");
                         } catch (FileNotFoundException e) {
-                            System.out.println("Sellist faili ei ole: " + String.valueOf(jätaMeelde1.getText()));
+                            System.out.println("Faili viga õpilaste failide kirjutamisel");
                         }
                     }
                 });

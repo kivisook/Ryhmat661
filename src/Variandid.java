@@ -12,6 +12,9 @@ public class Variandid {
     String pealkiri;
     ArrayList<ÕpilaseTöö> variant = new ArrayList<>();
 
+    public Variandid() {
+    }
+
     public Variandid(String pealkiri) {
         this.pealkiri = pealkiri;
     }
@@ -20,6 +23,9 @@ public class Variandid {
         return variant;
     }
 
+    public void setPealkiri(String pealkiri) {
+        this.pealkiri = pealkiri;
+    }
 
     // Õpilaste nimikirja lugemine failist
     public void loeNimekiri() throws FileNotFoundException {
@@ -145,10 +151,12 @@ public class Variandid {
         pw.close();
     }
 
-
+    public String getPealkiri() {
+        return pealkiri;
+    }
 
     @Override
     public String toString() {
-        return pealkiri+": "+ variant ;
+        return this.pealkiri+": "+ variant ;
     }
 }
